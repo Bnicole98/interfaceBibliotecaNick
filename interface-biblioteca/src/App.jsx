@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, React } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Inicio from "./componentes/inicio/inicio";
+import Principal from "./componentes/principal/principal";
+import Fim from "./componentes/fim/fim";
+import notFound from "./componentes/notFound/notFound";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <h1>Vite + React</h1>
-
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/main" element={<Principal />} />
+        <Route path="/fim" element={<Fim />} />
+        <Route path="*" element={<notFound />} />
+      </Routes>
+    </Router>
   );
 }
 
